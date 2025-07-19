@@ -1,6 +1,6 @@
 {
   "watch": ["src"],
-  "ext": "ts",
+  "ext": "ts,json",
   "ignore": ["dist"],
-  "exec": "node --env-file .env --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' src/index.ts"
+  "exec": "node --loader ts-node/esm src/index.ts"
 }
