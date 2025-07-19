@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -14,3 +13,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Platform {
+  id      Int     @id @default(autoincrement())
+  name    String  @unique
+  posts   Post[]
+}
+
+model Post {
+  id            Int         @id @default(autoincrement())
+  platform      Platform    @relation(fields: [platformId], references: [id])
+  platformId    Int
+  content       String
+  url           String      @unique
+  timestamp     DateTime
+  keywords      KeywordOccurrence[]
+}
+
+model Keyword {
+  id            Int         @id @default(autoincrement())
+  word          String      @unique
+  occurrences   KeywordOccurrence[]
+}
+
+model KeywordOccurrence {
+  id            Int         @id @default(autoincrement())
+  keyword       Keyword     @relation(fields: [keywordId], references: [id])
+  keywordId     Int
+  post          Post        @relation(fields: [postId], references: [id])
+  postId        Int
+  timestamp     DateTime
+}
