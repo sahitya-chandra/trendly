@@ -13,19 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Platform {
-  id      Int     @id @default(autoincrement())
-  name    String  @unique
-  posts   Post[]
-}
-
 model Post {
   id            Int         @id @default(autoincrement())
-  platform      Platform    @relation(fields: [platformId], references: [id])
-  platformId    Int
+  platform      String
+  title         String
   content       String
-  url           String      @unique
-  timestamp     DateTime
+  url           String      
+  author        String
+  createdAt     DateTime
   keywords      KeywordOccurrence[]
 }
 
@@ -37,9 +32,13 @@ model Keyword {
 
 model KeywordOccurrence {
   id            Int         @id @default(autoincrement())
-  keyword       Keyword     @relation(fields: [keywordId], references: [id])
   keywordId     Int
-  post          Post        @relation(fields: [postId], references: [id])
   postId        Int
+  platform      String
   timestamp     DateTime
+
+  post          Post        @relation(fields: [postId], references: [id])
+  keyword       Keyword     @relation(fields: [keywordId], references: [id])
+
+  @@unique([postId, keywordId])
 }

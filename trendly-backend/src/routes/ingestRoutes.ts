@@ -1,8 +1,8 @@
 import express from 'express'
-import { ingestPostData } from '../controllers/ingestController'
+import { ingestPosts } from '../controllers/ingestController'
 
 const router = express.Router()
 
-router.post('/', ingestPostData)
+router.post('/admin/ingest', ingestPosts)
 
 export default router

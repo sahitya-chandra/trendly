@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use('/api/posts',postRoutes)
 app.use('/api/trends', trendRoutes)
-app.use('/api/admin/ingest', ingestRoutes)
+app.use('/api', ingestRoutes)
 
 app.get("/", (_, res) => {
   res.send("Trendly API is running")
