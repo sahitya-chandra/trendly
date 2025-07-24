@@ -2,7 +2,7 @@ import prisma from "../config/db"
 import { extractKeywordsFromPosts } from "./keywordService";
 
 type PostInput = {
-  id: number;
+  id: string;
   title: string;
   content: string;
   url: string;
@@ -17,9 +17,10 @@ export const processIngestedPosts = async (
     const savedPosts = []
 
     for(const post of posts) {
+        const postId = `${platform}_${post.id}`;
         const exiting = await prisma.post.findFirst({
             where: {
-                id: post.id,
+                id: postId,
                 platform,
             }
         })
@@ -28,6 +29,7 @@ export const processIngestedPosts = async (
             const createdPost = await prisma.post.create({
                 data: {
                     ...post,
+                    id: postId,
                     createdAt: new Date(post.createdAt),
                     platform
                 }

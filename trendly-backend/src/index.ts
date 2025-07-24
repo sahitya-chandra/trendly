@@ -14,7 +14,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/posts',postRoutes)
-app.use('/api/trends', trendRoutes)
+app.use('/api', trendRoutes)
 app.use('/api', ingestRoutes)
 
 app.get("/", (_, res) => {
