@@ -1,4 +1,3 @@
-import { error } from "console";
 import { Request, Response } from "express";
 import { processIngestedPosts } from "../services/post.service";
 
@@ -13,7 +12,7 @@ export const ingestPosts = async (req: Request, res: Response) => {
         const savedPosts = await processIngestedPosts(platform, posts)
         res.status(201).json({ message: 'Posts ingested', savedPosts });
     } catch (err) {
-        console.error('Ingestion error:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Ingestion error:', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
     }
 }

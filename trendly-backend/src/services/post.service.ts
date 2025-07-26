@@ -1,7 +1,7 @@
 import prisma from "../config/db"
 import { extractKeywordsFromPosts } from "./keyword.service";
 
-type PostInput = {
+export type PostInput = {
   id: string;
   title: string;
   content: string;
