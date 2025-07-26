@@ -1,5 +1,5 @@
 import express from 'express'
-import { getPosts } from '../controllers/postController'
+import { getPosts } from '../controllers/post.controller'
 
 const router = express.Router()
 

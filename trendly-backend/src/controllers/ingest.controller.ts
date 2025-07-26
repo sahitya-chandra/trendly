@@ -1,6 +1,6 @@
 import { error } from "console";
 import { Request, Response } from "express";
-import { processIngestedPosts } from "../services/postService";
+import { processIngestedPosts } from "../services/post.service";
 
 export const ingestPosts = async (req: Request, res: Response) => {
     try {

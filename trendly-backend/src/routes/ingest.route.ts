@@ -1,5 +1,5 @@
 import express from 'express'
-import { ingestPosts } from '../controllers/ingestController'
+import { ingestPosts } from '../controllers/ingest.controller'
 
 const router = express.Router()
 

@@ -1,5 +1,5 @@
 import express from 'express'
-import { getTrendingKeywords } from '../controllers/trendController'
+import { getTrendingKeywords } from '../controllers/trend.controller'
 
 const router = express.Router()
 

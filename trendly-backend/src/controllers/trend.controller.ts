@@ -1,6 +1,5 @@
-import { error } from "console";
 import { Request, Response } from "express";
-import { fetchTrendingKeywords } from "../services/trendingService";
+import { fetchTrendingKeywords } from "../services/trending.service";
 
 export const getTrendingKeywords = async (req: Request, res: Response) => {
     try {

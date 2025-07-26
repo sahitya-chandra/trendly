@@ -1,9 +1,9 @@
 import express from "express"
 import dotenv from "dotenv"
 import cors from 'cors'
-import postRoutes from './routes/postRoutes'
-import trendRoutes from './routes/trendRoutes'
-import ingestRoutes from './routes/ingestRoutes'
+import postRoutes from './routes/post.route'
+import trendRoutes from './routes/trend.route'
+import ingestRoutes from './routes/ingest.route'
 
 dotenv.config()
 

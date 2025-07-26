@@ -1,5 +1,5 @@
 import prisma from "../config/db"
-import { extractKeywordsFromPosts } from "./keywordService";
+import { extractKeywordsFromPosts } from "./keyword.service";
 
 type PostInput = {
   id: string;
